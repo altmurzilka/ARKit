@@ -44,6 +44,7 @@ class ViewController: UIViewController, ARSCNViewDelegate {
         drawSpereAtOrigin()
         drawBoxAt1200High()
         drawPyramidAt600Low()
+        drawPlaneAt900() 
     }
     
     override func viewWillDisappear(_ animated: Bool) {
@@ -75,6 +76,14 @@ class ViewController: UIViewController, ARSCNViewDelegate {
         pyramid.geometry?.firstMaterial?.diffuse.contents = UIColor.green // ads actual color
         pyramid.geometry?.firstMaterial?.specular.contents = UIColor.red // adds shine
         sceneView.scene.rootNode.addChildNode(pyramid)
+    }
+    
+    func drawPlaneAt900() {
+        let plane = SCNNode(geometry: SCNPlane(width: 0.1, height: 0.1))
+        plane.position = SCNVector3(-0.2, 0, 0)
+        plane.geometry?.firstMaterial?.diffuse.contents = UIImage(named: "cat")
+        plane.geometry?.firstMaterial?.isDoubleSided = true
+        sceneView.scene.rootNode.addChildNode(plane)
     }
 
     // MARK: - ARSCNViewDelegate
